@@ -10,14 +10,17 @@ function HashTags() {
 
   const filterHashTag = (_itemTag, e) => {
     dispatch(activeHashTagKeys({ ..._itemTag, active: true }));
-
     const _filterHashTagActive = active.filter((item) => {
-      if (item?.todoText.includes(_itemTag.hashTag)) return item;
+      if (item?.todoText.includes(_itemTag.hashTag)) {
+        return item;
+      }
     });
     dispatch(hashTagActiveTODO(_filterHashTagActive));
     //
     const _filterHashTagCompleted = completed.filter((item) => {
-      if (item?.todoText.includes(_itemTag.hashTag)) return item;
+      if (item?.todoText.includes(_itemTag.hashTag)) {
+        return item;
+      }
     });
     dispatch(hashTagCompletedTODO(_filterHashTagCompleted));
     dispatch(hashTagFilterToggle(true));

@@ -1,6 +1,6 @@
 import { Card, Divider, Typography } from 'components';
 import { isEmpty } from 'lodash';
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 
 function CompletedTodos() {
@@ -25,12 +25,11 @@ function CompletedTodos() {
     })
     .reverse();
 
-  console.log('object hashTagFilterToggle hashTagFilterToggle', hashTagFilterToggle);
   return (
     (!isEmpty(completedTodoCards) || !isEmpty(hasTagCompletedTodoCards)) && (
       <>
         <Divider />
-        <div style={{ background: 'rgb(245 137 71 / 74%)' }} className="p-2 rounded">
+        <div style={{ background: 'rgb(245 137 71 / 74%)' }} className="p-2 rounded mb-3">
           <Typography text={`Completed`} className="text-left text-success font-weight-bold" />
           {!hashTagFilterToggle ? completedTodoCards : hasTagCompletedTodoCards}
         </div>

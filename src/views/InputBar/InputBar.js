@@ -1,7 +1,6 @@
 import { hashTagFilterToggle, setTODOText, TODOHashTagKeys } from 'actions/todoActions';
-import { uniqBy } from 'lodash';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { generateID } from 'utils';
 
 function InputBar() {
@@ -35,7 +34,7 @@ function InputBar() {
       <div className="form-group mt-3">
         <input
           type="text"
-          className="form-control"
+          className="form-control shadow-sm"
           id="todo"
           name="todo"
           value={todoText}

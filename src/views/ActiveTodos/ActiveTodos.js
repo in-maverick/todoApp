@@ -1,7 +1,7 @@
 import { hashTagActiveTODO, hashTagCompletedTODO, setActiveTODO, setCompletedTODO } from 'actions/todoActions';
 import { Card, Typography } from 'components';
 import { isEmpty } from 'lodash';
-import React, { memo, useReducer } from 'react';
+import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function ActiveTodos() {
@@ -21,10 +21,8 @@ function ActiveTodos() {
   };
 
   const moveTodoToCompletedHasTagFilter = (_item) => {
-    console.log('object  moveTodoToCompletedHasTagFilter ', _item);
     const activeTodos = hashTagActive.filter((item) => item.id !== _item.id);
     const completedTodos = hashTagActive.filter((item) => item.id === _item.id);
-    console.log('[moveTodoToCompletedHasTagFilter] activeTodos, completedTodos', activeTodos, completedTodos);
     dispatch(hashTagActiveTODO(activeTodos));
     dispatch(hashTagCompletedTODO(hashTagCompleted.concat(completedTodos)));
   };
@@ -43,7 +41,7 @@ function ActiveTodos() {
 
   return (
     (!isEmpty(active) || !isEmpty(hashTagActive)) && (
-      <div style={{ background: '#9fd09945' }} className="p-2 rounded">
+      <div style={{ background: '#9fd09945' }} className="p-2 rounded mb-3">
         <Typography text={`Active`} className="text-left text-success font-weight-bold" />
         {!hashTagFilterToggle ? activeTodoCards : filteredActiveTodoCards}
       </div>
