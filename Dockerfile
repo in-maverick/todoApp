@@ -1,7 +1,7 @@
 # Stage 1
-FROM node:12-alpine as uct-dashboard
-RUN mkdir -p /var/www/uct-dashboard
-WORKDIR /var/www/uct-dashboard
+FROM node:12-alpine as todo-app
+RUN mkdir -p /var/www/todo-app
+WORKDIR /var/www/todo-app
 #RUN apk add git
 #RUN apk --no-cache add openssl wget
 COPY package.json ./
@@ -14,8 +14,8 @@ RUN npm run build
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 # COPY default.conf /etc/nginx/conf.d/default.conf
-COPY --from=uct-dashboard /var/www/uct-dashboard/build /usr/share/nginx/html
+COPY --from=todo-app /var/www/todo-app/build /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
-EXPOSE 81
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 
