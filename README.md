@@ -1,4 +1,4 @@
-### Features
+### Setup and Run
 
 Steps need to run -
 - git clone https://github.com/in-maverick/todoApp.git
